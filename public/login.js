@@ -23,6 +23,6 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
         }
     } catch (error) {
         console.error('Error:', error);
-        alert('Login mechanism failed!');
+        alert('Login mechanism failed: ' + error.message);
     }
 });

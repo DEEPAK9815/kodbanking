@@ -15,7 +15,14 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
             body: JSON.stringify(data)
         });
 
-        const result = await response.json();
+        const contentType = response.headers.get("content-type");
+        let result;
+        if (contentType && contentType.indexOf("application/json") !== -1) {
+            result = await response.json();
+        } else {
+            const text = await response.text();
+            throw new Error(`Server returned non-JSON response: ${response.status} ${response.statusText}`);
+        }
 
         if (response.ok) {
             alert('Registration Successful! Redirecting to login...');
@@ -25,6 +32,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
         }
     } catch (error) {
         console.error('Error:', error);
-        alert('Something went wrong!');
+        alert('Something went wrong: ' + error.message);
     }
+}
 });
