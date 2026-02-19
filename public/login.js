@@ -13,7 +13,14 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
             body: JSON.stringify(data)
         });
 
-        const result = await response.json();
+        const contentType = response.headers.get("content-type");
+        let result;
+        if (contentType && contentType.indexOf("application/json") !== -1) {
+            result = await response.json();
+        } else {
+            const text = await response.text();
+            throw new Error(`Server returned non-JSON response: ${response.status} ${response.statusText} - ${text.substring(0, 50)}...`);
+        }
 
         if (response.ok) {
             // Token is set in cookie by server

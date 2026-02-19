@@ -123,6 +123,11 @@ app.get('/check-balance', async (req, res) => {
     }
 });
 
+// Handle 404 (must be last)
+app.use((req, res) => {
+    res.status(404).json({ error: `Route ${req.originalUrl} not found` });
+});
+
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
