@@ -17,12 +17,12 @@
 
 body {
     background: linear-gradient(135deg, var(--bg-color), #302b63, #24243e);
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
     color: var(--text-color);
+    padding: 20px 0;
 }
 
 .container {
@@ -141,8 +141,13 @@ a:hover {
 }
 
 @keyframes move {
-    from { transform: translate(0, 0); }
-    to { transform: translate(50px, 50px); }
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(50px, 50px);
+    }
 }
 
 /* Dashboard Specific */
@@ -163,5 +168,8 @@ a:hover {
 }
 
 @keyframes fall {
-    to { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    to {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
 }
