@@ -65,7 +65,7 @@ app.post('/login', async (req, res) => {
 
         if (rows.length === 0) {
             console.log(`Login failed: User '${uname}' not found.`);
-            return res.status(401).json({ error: 'Invalid credentials' });
+            return res.status(401).json({ error: 'User not found' });
         }
 
         const user = rows[0];
@@ -73,7 +73,7 @@ app.post('/login', async (req, res) => {
 
         if (!match) {
             console.log(`Login failed: Password mismatch for user '${uname}'.`);
-            return res.status(401).json({ error: 'Invalid credentials' });
+            return res.status(401).json({ error: 'Password mismatch' });
         }
 
         // Generate JWT
