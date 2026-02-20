@@ -128,6 +128,12 @@ app.use((req, res) => {
     res.status(404).json({ error: `Route ${req.originalUrl} not found` });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
+// Export the Express API
+module.exports = app;
+
+// Only start server if running directly (local dev)
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
+}
