@@ -11,8 +11,10 @@ const pool = mysql.createPool({
         rejectUnauthorized: false
     },
     waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
+    connectionLimit: 5, // Aiven free tier has low connection limits
+    queueLimit: 0,
+    connectTimeout: 60000, // 60s timeout
+    enableKeepAlive: true,
 });
 
 async function initDB() {
