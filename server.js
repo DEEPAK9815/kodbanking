@@ -26,9 +26,11 @@ initDB();
 // Registration Endpoint
 app.post('/register', async (req, res) => {
     const { uid, uname, password, email, phone } = req.body;
+    console.log(`Registration attempt for user: ${uname} with email: ${email}`);
 
     // Basic validation
     if (!uname || !password || !email || !phone) {
+        console.log('Registration failed: Missing fields');
         return res.status(400).json({ error: 'All fields are required' });
     }
 
@@ -42,6 +44,7 @@ app.post('/register', async (req, res) => {
             [uid || null, uname, hashedPassword, email, phone, 'customer', 100000]
         );
 
+        console.log(`User registered successfully. Insert ID: ${result.insertId}`);
         res.status(201).json({ message: 'User registered successfully', userId: result.insertId });
     } catch (error) {
         console.error('Registration error:', error);
