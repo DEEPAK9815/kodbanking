@@ -7,6 +7,9 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
     if (!data.uid) delete data.uid; // Remove empty UID to let DB auto-increment
 
     try {
+        console.log('Sending registration data:', data);
+        alert('Sending registration data...'); // Debug alert
+
         const response = await fetch('/register', {
             method: 'POST',
             headers: {
@@ -14,6 +17,8 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
             },
             body: JSON.stringify(data)
         });
+
+        alert('Response received: ' + response.status); // Debug alert
 
         const contentType = response.headers.get("content-type");
         let result;
@@ -34,5 +39,4 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
         console.error('Error:', error);
         alert('Something went wrong: ' + error.message);
     }
-}
 });
