@@ -48,7 +48,7 @@ app.post('/register', async (req, res) => {
         if (error.code === 'ER_DUP_ENTRY') {
             return res.status(400).json({ error: 'Username already exists' });
         }
-        res.status(500).json({ error: 'Server error during registration' });
+        res.status(500).json({ error: 'Registration failed: ' + error.message });
     }
 });
 
@@ -90,7 +90,7 @@ app.post('/login', async (req, res) => {
         res.json({ message: 'Login successful', token });
     } catch (error) {
         console.error('Login error:', error);
-        res.status(500).json({ error: 'Server error during login' });
+        res.status(500).json({ error: 'Login failed: ' + error.message });
     }
 });
 
