@@ -64,6 +64,7 @@ app.post('/login', async (req, res) => {
         const [rows] = await pool.query('SELECT * FROM koduser WHERE uname = ?', [uname]);
 
         if (rows.length === 0) {
+            console.log(`Login failed: User '${uname}' not found.`);
             return res.status(401).json({ error: 'Invalid credentials' });
         }
 
@@ -71,6 +72,7 @@ app.post('/login', async (req, res) => {
         const match = await bcrypt.compare(password, user.password);
 
         if (!match) {
+            console.log(`Login failed: Password mismatch for user '${uname}'.`);
             return res.status(401).json({ error: 'Invalid credentials' });
         }
 
