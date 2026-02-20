@@ -4,48 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kodbank - Register</title>
+    <title>Kodbank - Create Account</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
-<body>
-    <div class="background-circles">
-        <div class="circle"></div>
-        <div class="circle"></div>
-    </div>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-logo">
+            <i class="fas fa-shield-halved"></i>
+            <span>Kodbank</span>
+        </div>
+        <h1 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--primary);">Create Account</h1>
+        <p class="auth-subtitle">Join thousands of secure customers today.</p>
 
-    <div class="container">
-        <h1>Kodbank</h1>
         <form id="registerForm">
-            <div class="input-group">
-                <label for="uid">User ID (Optional)</label>
-                <input type="number" id="uid" name="uid" placeholder="Auto-generated if empty">
-            </div>
-            <div class="input-group">
+            <div class="form-group">
                 <label for="uname">Username</label>
-                <input type="text" id="uname" name="uname" required placeholder="Choose a username">
+                <input type="text" id="uname" name="uname" required placeholder="Choose a unique username">
             </div>
-            <div class="input-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" required placeholder="Enter your email">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="name@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="+1 234 567 890">
+                </div>
             </div>
-            <div class="input-group">
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" required placeholder="Enter your number">
-            </div>
-            <div class="input-group">
-                <label for="role">Role</label>
-                <input type="text" id="role" name="role" value="customer" readonly
-                    style="background: rgba(255, 255, 255, 0.1); cursor: not-allowed;">
-            </div>
-            <div class="input-group">
+            <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" required placeholder="Create a password">
+                <input type="password" id="password" name="password" required placeholder="Min. 8 characters">
             </div>
-            <button type="submit">Register</button>
+            <div class="form-group" style="display: none;">
+                <label for="role">Role</label>
+                <input type="text" id="role" name="role" value="customer" readonly>
+            </div>
+            <button type="submit" class="auth-button">Get Started</button>
         </form>
-        <a href="login.html">Already have an account? Login</a>
+
+        <div class="auth-footer">
+            Already have an account? <a href="login.html">Sign In</a>
+        </div>
     </div>
 
     <script src="register.js"></script>

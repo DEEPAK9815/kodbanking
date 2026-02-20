@@ -4,31 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kodbank - Login</title>
+    <title>Kodbank - Secure Login</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
-<body>
-    <div class="background-circles">
-        <div class="circle"></div>
-        <div class="circle"></div>
-    </div>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-logo">
+            <i class="fas fa-shield-halved"></i>
+            <span>Kodbank</span>
+        </div>
+        <h1 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--primary);">Secure Login</h1>
+        <p class="auth-subtitle">Welcome back! Please enter your details.</p>
 
-    <div class="container">
-        <h1>Welcome Back</h1>
         <form id="loginForm">
-            <div class="input-group">
+            <div class="form-group">
                 <label for="uname">Username</label>
-                <input type="text" id="uname" name="uname" required placeholder="Enter username">
+                <input type="text" id="uname" name="uname" required placeholder="Enter your username">
             </div>
-            <div class="input-group">
+            <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" required placeholder="Enter password">
+                <input type="password" id="password" name="password" required placeholder="••••••••">
             </div>
-            <button type="submit">Login</button>
+            <button type="submit" class="auth-button">Sign In</button>
         </form>
-        <a href="register.html">Don't have an account? Register</a>
+
+        <div class="auth-footer">
+            Don't have an account? <a href="register.html">Create an Account</a>
+        </div>
     </div>
 
     <script src="login.js"></script>

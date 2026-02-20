@@ -6,25 +6,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kodbank - Dashboard</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-    <div class="background-circles">
-        <div class="circle"></div>
-        <div class="circle"></div>
-    </div>
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <i class="fas fa-shield-halved"></i>
+                <span>Kodbank</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">
+                    <i class="fas fa-house"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-wallet"></i>
+                    <span>Accounts</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-arrow-right-arrow-left"></i>
+                    <span>Transfers</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="login.html" class="nav-item"
+                    onclick="document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';">
+                    <i class="fas fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
 
-    <div class="container">
-        <h1>User Dashboard</h1>
-        <p>Welcome to Kodbank</p>
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div class="welcome-section">
+                    <h1>Welcome back, <span id="user-greeting">User</span>!</h1>
+                    <p>Here's what's happening with your accounts today.</p>
+                </div>
+                <div class="header-actions">
+                    <button class="auth-button" style="width: auto; padding: 0.5rem 1rem;">
+                        <i class="fas fa-plus"></i> New Transfer
+                    </button>
+                </div>
+            </header>
 
-        <button id="checkBalanceBtn" style="margin-top: 30px;">Check Balance</button>
+            <!-- Stats Overview -->
+            <section class="stats-grid">
+                <div class="card balance-card">
+                    <div class="card-title">
+                        <span>Total Balance</span>
+                        <i class="fas fa-ellipsis-vertical"></i>
+                    </div>
+                    <div class="card-amount" id="balance-display">Loading...</div>
+                    <div style="margin-top: 1.5rem;">
+                        <button id="checkBalanceBtn" class="auth-button"
+                            style="background: rgba(255,255,255,0.2); backdrop-filter: blur(5px);">
+                            Refresh Balance
+                        </button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">
+                        <span>Monthly Spend</span>
+                        <i class="fas fa-caret-up" style="color: #ef4444;"></i>
+                    </div>
+                    <div class="card-amount">$4,250.00</div>
+                    <div style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-muted);">
+                        <span style="color: #ef4444; font-weight: 600;">+12%</span> from last month
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">
+                        <span>Savings Goal</span>
+                        <i class="fas fa-bullseye" style="color: var(--accent);"></i>
+                    </div>
+                    <div class="card-amount">85%</div>
+                    <div
+                        style="margin-top: 1rem; height: 8px; background: var(--bg-main); border-radius: 4px; overflow: hidden;">
+                        <div style="width: 85%; height: 100%; background: var(--accent);"></div>
+                    </div>
+                </div>
+            </section>
 
-        <div id="balance-display"></div>
-
-        <a href="login.html"
-            onclick="document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';">Logout</a>
+            <!-- Recent Activity -->
+            <section class="activity-section">
+                <div class="section-header">
+                    <h2>Recent Transactions</h2>
+                    <a href="#"
+                        style="color: var(--accent); text-decoration: none; font-size: 0.875rem; font-weight: 600;">View
+                        All</a>
+                </div>
+                <div class="transaction-list">
+                    <div class="transaction-item">
+                        <div class="transaction-info">
+                            <div class="transaction-icon icon-out">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="transaction-details">
+                                <p>Amazon.com</p>
+                                <span>Today, 10:45 AM</span>
+                            </div>
+                        </div>
+                        <div class="transaction-amount amount-negative">-$120.50</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="transaction-info">
+                            <div class="transaction-icon icon-in">
+                                <i class="fas fa-money-bill-transfer"></i>
+                            </div>
+                            <div class="transaction-details">
+                                <p>Salary Deposit</p>
+                                <span>Yesterday, 09:00 AM</span>
+                            </div>
+                        </div>
+                        <div class="transaction-amount amount-positive">+$4,500.00</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="transaction-info">
+                            <div class="transaction-icon icon-out">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <div class="transaction-details">
+                                <p>Starbucks Coffee</p>
+                                <span>Feb 18, 2026</span>
+                            </div>
+                        </div>
+                        <div class="transaction-amount amount-negative">-$5.75</div>
+                    </div>
+                </div>
+            </section>
+        </main>
     </div>
 
     <script src="dashboard.js"></script>
